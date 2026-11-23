@@ -1,6 +1,13 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const getProfile = async (req, res) => {
+  res.status(200).json({
+    message: "Protected Route Accessed",
+    user: req.user,
+  });
+};
+
 
 // Register User
 const registerUser = async (req, res) => {
@@ -88,4 +95,5 @@ const loginUser = async (req, res) => {
 module.exports = {
   registerUser,
   loginUser,
+  getProfile,
 };
