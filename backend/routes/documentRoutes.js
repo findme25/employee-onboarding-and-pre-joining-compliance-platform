@@ -7,6 +7,8 @@ const upload = require("../config/multer");
 const {
   uploadDocument,
   getDocuments,
+  verifyDocument,
+  rejectDocument,
 } = require("../controllers/documentController");
 
 router.post(
@@ -16,5 +18,6 @@ router.post(
 );
 
 router.get("/", getDocuments);
-
+router.patch("/verify/:id", verifyDocument);
+router.patch("/reject/:id", rejectDocument);
 module.exports = router;

@@ -31,8 +31,69 @@ const getDocuments = async (req, res) => {
     });
   }
 };
+const verifyDocument = async (req, res) => {
+  try {
+    const document = await Document.findByIdAndUpdate(
+      req.params.id,
+      {
+        status: "Verified",
+        remarks: "Document verified successfully",
+      },
+      {
+        returnDocument: "after",
+      }
+    );
+
+    res.status(200).json({
+      message: "Document verified",
+      document,
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+const rejectDocument = async (req, res) => {
+  try {
+
+    const remarks =
+      req.body?.remarks || "Document rejected";
+
+    const document =
+      await Document.findByIdAndUpdate(
+        req.params.id,
+        {
+          status: "Rejected",
+          remarks,
+        },
+        {
+          returnDocument: "after",
+        }
+      );
+
+    if (!document) {
+      return res.status(404).json({
+        message: "Document not found",
+      });
+    }
+
+    res.status(200).json({
+      message: "Document rejected",
+      document,
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 
 module.exports = {
   uploadDocument,
   getDocuments,
+  verifyDocument,
+  rejectDocument,
 };
