@@ -7,7 +7,7 @@ const connectDB = require("./config/db");
 const authRoutes = require("./routes/authRoutes");
 const employeeRoutes = require("./routes/employeeRoutes");
 const onboardingPlanRoutes = require("./routes/onboardingPlanRoutes");
-
+const documentRoutes = require("./routes/documentRoutes");
 
 const app = express();
 
@@ -19,6 +19,7 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/onboarding-plans", onboardingPlanRoutes);
+app.use("/api/documents", documentRoutes);
 app.get("/", (req, res) => {
   res.send("Employee Onboarding API Running");
 });
