@@ -12,7 +12,7 @@ import Notifications from "../pages/Notifications";
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/employees" element={<Employees />} />
