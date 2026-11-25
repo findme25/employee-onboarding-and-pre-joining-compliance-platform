@@ -1,4 +1,4 @@
-import { Avatar, Button, TextField, Box, Typography, Container } from "@mui/material";
+import { Avatar, Button, TextField, Box, Typography, Container, Alert } from "@mui/material";
 import LockOpenIcon from "@mui/icons-material/LockOpen";
 import { useState } from "react";
 import api from "../services/api";
@@ -8,16 +8,19 @@ export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       await api.post("/auth/register", { name, email, password });
-      // after registration, redirect to login
-      navigate("/login");
+      setSuccess(true);
+      setTimeout(() => navigate("/login"), 1500);
     } catch (err) {
       console.error("Register error", err);
+      setError(err.response?.data?.message || "Registration failed");
     }
   };
 
@@ -37,6 +40,8 @@ export default function Register() {
         <Typography component="h1" variant="h5">
           Register
         </Typography>
+        {error && <Alert severity="error" sx={{ width: "100%", mt: 2 }}>{error}</Alert>}
+        {success && <Alert severity="success" sx={{ width: "100%", mt: 2 }}>Registration successful! Redirecting to login…</Alert>}
         <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
           <TextField
             margin="normal"
@@ -70,7 +75,7 @@ export default function Register() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
+          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }} disabled={success}>
             Sign Up
           </Button>
         </Box>
