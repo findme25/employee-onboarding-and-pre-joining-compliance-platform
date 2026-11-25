@@ -11,6 +11,7 @@ const documentRoutes = require("./routes/documentRoutes");
 const bgvRoutes = require("./routes/bgvRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 const assetRoutes = require("./routes/assetRoutes");
+const complianceRoutes = require("./routes/complianceRoutes");
 const app = express();
 
 connectDB();
@@ -25,6 +26,7 @@ app.use("/api/documents", documentRoutes);
 app.use("/api/bgv", bgvRoutes); 
 app.use("/api/tasks", taskRoutes);
 app.use("/api/assets", assetRoutes);
+app.use("/api/compliance", complianceRoutes);
 app.get("/", (req, res) => {
   res.send("Employee Onboarding API Running");
 });
