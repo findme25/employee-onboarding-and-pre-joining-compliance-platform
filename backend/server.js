@@ -10,6 +10,7 @@ const onboardingPlanRoutes = require("./routes/onboardingPlanRoutes");
 const documentRoutes = require("./routes/documentRoutes");
 const bgvRoutes = require("./routes/bgvRoutes");
 const taskRoutes = require("./routes/taskRoutes");
+const assetRoutes = require("./routes/assetRoutes");
 const app = express();
 
 connectDB();
@@ -23,6 +24,7 @@ app.use("/api/onboarding-plans", onboardingPlanRoutes);
 app.use("/api/documents", documentRoutes);
 app.use("/api/bgv", bgvRoutes); 
 app.use("/api/tasks", taskRoutes);
+app.use("/api/assets", assetRoutes);
 app.get("/", (req, res) => {
   res.send("Employee Onboarding API Running");
 });
