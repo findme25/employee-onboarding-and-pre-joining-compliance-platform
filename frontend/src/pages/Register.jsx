@@ -9,13 +9,14 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState("");
+  const [department, setDepartment] = useState("");
   const [success, setSuccess] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await api.post("/auth/register", { name, email, password });
+      await api.post("/auth/register", { name, email, password, department });
       setSuccess(true);
       setTimeout(() => navigate("/login"), 1500);
     } catch (err) {
