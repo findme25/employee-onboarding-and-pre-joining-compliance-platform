@@ -1,10 +1,10 @@
-import React from "react";
+import MainLayout from "../layouts/MainLayout";
 
 function Dashboard() {
   return (
-    <div>
-      <h2>Dashboard</h2>
-    </div>
+    <MainLayout>
+      <h1>Dashboard</h1>
+    </MainLayout>
   );
 }
 
