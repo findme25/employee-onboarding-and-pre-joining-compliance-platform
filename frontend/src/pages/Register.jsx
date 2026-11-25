@@ -69,6 +69,15 @@ export default function Register() {
             margin="normal"
             required
             fullWidth
+            label="Department"
+            name="department"
+            value={department}
+            onChange={(e) => setDepartment(e.target.value)}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
             name="password"
             label="Password"
             type="password"
