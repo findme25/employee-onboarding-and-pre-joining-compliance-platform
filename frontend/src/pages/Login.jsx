@@ -12,7 +12,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await api.post("/login", { email, password });
+      const response = await api.post("/auth/login", { email, password });
       const { token } = response.data;
       localStorage.setItem("token", token);
       navigate("/dashboard");
