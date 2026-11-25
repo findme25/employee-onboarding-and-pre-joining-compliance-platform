@@ -12,6 +12,9 @@ const bgvRoutes = require("./routes/bgvRoutes");
 const taskRoutes = require("./routes/taskRoutes");
 const assetRoutes = require("./routes/assetRoutes");
 const complianceRoutes = require("./routes/complianceRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
+const notificationRoutes = require("./routes/notificationRoutes");
+const auditlogRoutes = require("./routes/auditlogRoutes");
 const app = express();
 
 connectDB();
@@ -27,6 +30,9 @@ app.use("/api/bgv", bgvRoutes);
 app.use("/api/tasks", taskRoutes);
 app.use("/api/assets", assetRoutes);
 app.use("/api/compliance", complianceRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/notifications", notificationRoutes);
+app.use("/api/auditlogs", auditlogRoutes);
 app.get("/", (req, res) => {
   res.send("Employee Onboarding API Running");
 });
